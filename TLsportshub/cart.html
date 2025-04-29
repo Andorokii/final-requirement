@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>TL Sports Hub</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<style type="text/css">
+		body {
+            background-color: lightpink;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: lightpink;
+            padding: 20px 40px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-title img {
+            width: 60px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        .logo-title h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        nav .nav-link {
+            color: blue;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav .nav-link:hover {
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+	<header>
+        <div class="header-container">
+            <div class="logo-title">
+                <img src="images/logo.png" alt="TL Logo">
+                <h1>TL Sports Hub</h1>
+            </div>
+
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+		<div class="container cart-container">
+        <h2 class="text-center mb-4">🛒 Your Cart</h2>
+        <div id="cartItems" class="row gy-3"></div>
+        <hr>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="total-price" id="totalPrice">Total: ₱0.00</div>
+            <button class="btn btn-success" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Cart Script -->
+    <script>
+       // Get references to HTML elements
+const cartItemsContainer = document.getElementById("cartItems");
+const totalPriceElement = document.getElementById("totalPrice");
+
+// Load cart data from localStorage or initialize as empty array
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// Helper function to format price string into number
+function formatPrice(pesoString) {
+    return parseFloat(pesoString.replace(/[₱,]/g, ''));
+}
+
+// Update total price
+function updateTotal() {
+    let total = 0;
+    cart.forEach(item => total += formatPrice(item.price));
+    totalPriceElement.textContent = `Total: ₱${total.toFixed(2)}`;
+}
+
+// Remove item from cart
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
+
+// Render the cart items dynamically
+function renderCart() {
+    cartItemsContainer.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = `<p class="text-center">Your cart is empty.</p>`;
+        totalPriceElement.textContent = "Total: ₱0.00";
+        return;
+    }
+
+    cart.forEach((item, index) => {
+        const col = document.createElement("div");
+        col.className = "col-md-12";
+        col.innerHTML = `
+            <div class="d-flex align-items-center justify-content-between cart-item p-3 border rounded shadow-sm">
+                <div class="d-flex align-items-center gap-3">
+                    <img src="${item.imgSrc}" alt="${item.title}" class="img-fluid" style="width: 120px; height: auto;">
+                    <div>
+                        <h5 class="mb-1">${item.title}</h5>
+                        <p class="mb-0 text-success fw-bold">${item.price}</p>
+                    </div>
+                </div>
+                <button class="btn btn-danger btn-sm" onclick="removeItem(${index})">Remove</button>
+            </div>
+        `;
+        cartItemsContainer.appendChild(col);
+    });
+
+    updateTotal();
+}
+
+// Redirect to checkout page
+function checkout() {
+    window.location.href = "checkout.html";
+}
+
+// Initial rendering of the cart
+renderCart();
+
+    </script>
+</body>
+</html

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>TL Sports Hub</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<style type="text/css">
+		.services-section{
+			background-color: lightpink;
+			height: 860px;
+			align-items: center;
+			text-align: center;
+		}
+
+		.services-section h2{
+			font-size: 2rem;
+			margin-bottom: 10px;
+		}
+		.services-section .tagline{
+			font-size: 1.5rem;
+			margin-bottom: 40px;
+		}	
+		.services-grid{
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+			gap: 30px;
+		}
+		.service-card{
+				color: pink;
+				padding: 30px;
+				border-radius: 10px;
+				box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+				transition: transform 0.3s ease;
+				margin-top: 100px;
+		}
+		.service-card h3{
+			color: black;
+			margin-bottom: 10px;
+			font-size: 30px;
+		}
+		.service-card p{
+			color: black;
+			font-size: 20px;
+		}
+		.service-card:hover{
+			transform: translateY(-5px);
+			background-color: white;
+		}
+		body {
+            background-color: lightpink;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: lightpink;
+            padding: 20px 40px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-title img {
+            width: 60px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        .logo-title h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        nav .nav-link {
+            color: blue;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav .nav-link:hover {
+            background-color: whitesmoke;
+        }
+	</style>
+</head>
+<body>
+	<header>
+        <div class="header-container">
+            <div class="logo-title">
+                <img src="images/logo.png" alt="TL Logo">
+                <h1>TL Sports Hub</h1>
+            </div>
+
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+		<section class="services-section">
+			<div class="container">
+				<h2>Our Services</h2>
+				<p class="tagline">Your Home for all things Sports</p>
+				<div class="services-grid">
+					
+					<div class="service-card">
+						<h3>Fast Delivery</h3>
+						<p>Get your order as soon as possible</p>
+					</div>
+					 <div class="service-card">
+						<h3>24/7 Customer Support</h3>
+						<p>Need help? Our friendly support team is available anytime</p>
+					</div>
+					<div class="service-card">
+						<h3>Exclusive Offer</h3>
+						<p>Get access to members only deals, flash sales, and loyalty rewards when you shop with us</p>
+					</div>
+					<div class="service-card">
+						<h3>Easy Return</h3>
+						<p>Changed your mind? No worries, enjoy hassle free return within 14 days</p>
+					</div>
+				</div>
+			</div>
+		</section>
+</body>
+</html
